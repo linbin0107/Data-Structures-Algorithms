@@ -5,6 +5,84 @@ public class Solution {
     public Solution() {
 
     }
+
+    // Bubble sort
+    public void BubbleSort(int []array) {
+        if (array == null || array.length == 0)
+            return;
+
+        int size = array.length;
+        for (int i = 0; i < size; ++i) {
+            // Last i numbers are already in sorted order
+            for (int j = 0; j < size - i - 1; ++j) {
+                if (array[j] > array[j+1]) {
+                    swap(array, i, j);
+                }
+            }
+        }
+
+        display(array);
+    }
+
+    // Insertion sort
+    public void InsertionSort(int []array) {
+        if (array == null || array.length == 0)
+            return;
+
+        int size = array.length;
+
+        for (int i = 0; i < size; ++i) {
+            int j = i;
+
+            while (j > 0 && array[j - 1] > array[j]) {
+                swap(array, j-1, j);
+                --j;
+            }
+        }
+
+        display(array);
+    }
+
+    // Heap sort (max heap)
+    public void HeapSort(int []array) {
+        if (array == null || array.length == 0)
+            return;
+
+        int size = array.length;
+
+        // heapify (build max heap)
+        for (int i = size / 2 - 1; i >= 0; --i) {
+            siftDown(array, i, size);
+        }
+
+        // Sort the array using the built max heap
+        for (int i = size - 1; i >= 0; --i) {
+            swap(array, 0, i);
+
+            siftDown(array, 0, i);
+        }
+
+        display(array);
+    }
+
+    public void siftDown(int []array, int index, int size) {
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
+        int largest = index;
+
+        if ((left < size) && (array[left] > array[largest]))
+            largest = left;
+
+        if ((right < size) && (array[right] > array[largest]))
+            largest = right;
+
+        if (largest != index) {
+            swap(array, largest, index);
+
+            siftDown(array, largest, size);
+        }
+    }
+
     // Selection sort
     public int[] SelectionSort(int []array) {
         if (array == null || array.length == 0)
@@ -170,5 +248,23 @@ public class Solution {
         solu.QuickSort(arr2);
         solu.QuickSort(arr3);
         solu.QuickSort(arr4);
+
+        System.out.println("Bubble sort: ");
+        solu.BubbleSort(arr1);
+        solu.BubbleSort(arr2);
+        solu.BubbleSort(arr3);
+        solu.BubbleSort(arr4);
+
+        System.out.println("Insertion sort: ");
+        solu.InsertionSort(arr1);
+        solu.InsertionSort(arr2);
+        solu.InsertionSort(arr3);
+        solu.InsertionSort(arr4);
+
+        System.out.println("Heap sort: ");
+        solu.HeapSort(arr1);
+        solu.HeapSort(arr2);
+        solu.HeapSort(arr3);
+        solu.HeapSort(arr4);
     }
 }
