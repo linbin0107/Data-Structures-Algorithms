@@ -82,6 +82,7 @@ public class Solution {
         return -1;
     }
 
+	// Find the closest element to the target
     public int closestValue(int []array, int target) {
         if (array == null || array.length == 0)
             return -1;
@@ -104,6 +105,7 @@ public class Solution {
             return start;
     }
 
+	// Find the K closest numbers to T in an array
     public int[] Kclosest(int []array, int t, int k) {
         if (array == null || array.length == 0 || k == 0)
             return null;
@@ -137,6 +139,7 @@ public class Solution {
         return res;
     }
 
+	// Search in a sorted matrix
     public boolean searchMatrix(int [][]matrix, int target){
         if (matrix == null || matrix[0] == null)
             return false;
