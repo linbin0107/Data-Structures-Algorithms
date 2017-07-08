@@ -208,7 +208,7 @@ public class Solution {
      * @return
      */
     public ListNode partitionLinkedList(ListNode head, int target) {
-        if (head == null && head.next == null)
+        if (head == null || head.next == null)
             return head;
 
         ListNode dummy = new ListNode(0);
