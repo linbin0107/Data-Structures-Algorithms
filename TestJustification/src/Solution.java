@@ -38,6 +38,7 @@ public class Solution {
             int extra = maxWidth - len;
             int num = j - i;
 
+            // If the line contains only one word. In this case, the line should be left-justified
             if (num == 1) {
                 sb.append(words[i]);
 
@@ -47,6 +48,7 @@ public class Solution {
                 }
 
                 res.add(sb.toString());
+            // If the line is the last line, then the line also should be left justified
             } else if (j == words.length) {
                 for (int k = i; k < j; ++k) {
                     sb.append(words[k]);
@@ -65,6 +67,7 @@ public class Solution {
                 }
 
                 res.add(sb.toString());
+            // All other cases, distribute the extra spaces as evenly as possible
             } else {
                 int cnt = extra / (num - 1);
                 String space = "";
